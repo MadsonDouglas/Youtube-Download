@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/css/style.css" rel="stylesheet">
+    <title><%- titulo%></title>
+</head>
+
+<body>
+    <div class="row my-5 py-5">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="col-10">
+                            <h2> Download de Vídeo do youtube</h2>
+                            <input type="text" id='text' class="form-control form-control-lg py-2" placeholder="link do video">
+                        </div>
+                        <div class="col-2"> 
+                            <button onclick="enviar()" class="btn btn-success mt-5">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function enviar() {
+            var texto = document.getElementById('text').value
+            document.getElementById('text').value = ''
+            fetch('http://localhost:3000/download', {
+                method: 'POST',
+                headers: { 'Content-Type': 'Application/json' },
+                body: JSON.stringify({ url: texto })
+            })
+                .then(function (response) { return response.json() })
+                .then(function (response) {
+                    window.location = 'http://localhost:3000/videos/' + response.video
+                })
+        }
+    </script>
+</body>
+
+</html>

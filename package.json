@@ -1,0 +1,24 @@
+{
+  "name": "download",
+  "version": "1.0.0",
+  "description": "download de video do youtube",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "download",
+    "youtube",
+    "video",
+    "audio"
+  ],
+  "author": "madson",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "path": "^0.12.7",
+    "ytdl-core": "^0.29.1"
+  }
+}
